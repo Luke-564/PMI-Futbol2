@@ -1,22 +1,19 @@
 package Controlador;
 
+import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
-import java.util.ArrayList;
 import Model.Jugadora;
 import Model.Arbitro;
 
-
-import java.util.ArrayList;
-
 public class ControladorArchivo {
     
-    File aj = new File("\\PMI-Futbol\\PMI-FutbolJugadoras.txt");
-    File aa = new File("\\PMI-Futbol\\PMI-FutbolArbitros.txt");
+    File aj = new File("PMI-Futbol2\\PMI-Futbol\\srcPMI-FutbolJugadoras.txt");
+    File aa = new File("PMI-Futbol2\\PMI-Futbol\\src\\PMI-FutbolArbitros.txt");
 
     public void setAj(File aj) {
         this.aj = aj;
@@ -33,14 +30,10 @@ public class ControladorArchivo {
     public File getAa() {
         return aa;
     }
-    
 
     public ControladorArchivo() {
     }
-
     
-    
-
 public void incioMemoriaJugadoras(ArrayList<Jugadora> lista){ //Metodo que inicializa la lista de Jugadoras
     try(BufferedReader br = new BufferedReader(new FileReader(aj))) { //creo un buffer para leer renglones
       if (aj.createNewFile()) {                                       
@@ -68,9 +61,9 @@ public void incioMemoriaJugadoras(ArrayList<Jugadora> lista){ //Metodo que inici
       }
       br.close(); //Cuando el bloque de Try termina, el archivo se cierra solo, pero creo que no está de más
     } catch (IOException e) {
-      System.out.println("Error en archivo de Jugadora");
     }
 }
+
 public void inicioMemoriaArbitros(ArrayList<Arbitro> lista){
 try(BufferedReader br = new BufferedReader(new FileReader(aa))){
     if(aa.createNewFile()){
@@ -103,6 +96,7 @@ try(BufferedReader br = new BufferedReader(new FileReader(aa))){
 }
 catch(IOException e){}
 }
+
 public void guardarJuEnArchivo(ArrayList<Jugadora> ju){
 try (BufferedWriter bw = new BufferedWriter(new FileWriter(aj))){
     for (Jugadora p : ju) {
