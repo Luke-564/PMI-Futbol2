@@ -12,8 +12,8 @@ import Model.Arbitro;
 
 public class ControladorArchivo {
     
-    File aj = new File("C:\\Users\\HP\\OneDrive\\OneDrive\\Escritorio\\Pala\\Maldita Perra Facultad\\2° Año\\Programación 2\\PMI-Futbol2\\PMI-Futbol\\src\\PMI-FutbolJugadoras.txt");
-    File aa = new File("C:\\Users\\HP\\OneDrive\\OneDrive\\Escritorio\\Pala\\Maldita Perra Facultad\\2° Año\\Programación 2\\PMI-Futbol2\\PMI-Futbol\\src\\PMI-FutbolArbitros.txt");
+    File aj = new File("PMI-FutbolJugadoras.txt");
+    File aa = new File("PMI-FutbolArbitros.txt");
     boolean fin = false;
     
     public void setAj(File aj) {
