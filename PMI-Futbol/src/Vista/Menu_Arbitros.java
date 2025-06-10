@@ -1,0 +1,711 @@
+
+package Vista;
+import Controlador.ControladorArbitros;
+import java.awt.GridLayout;
+import java.util.Set;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
+
+public class Menu_Arbitros extends javax.swing.JFrame {
+
+    //Las tablas en java trabajan con modelos, esos son los modelos para las
+    //tabla de arbitros
+    DefaultTableModel modelArbitros = new DefaultTableModel();
+    //tabla de funciones
+    DefaultTableModel modelFunciones = new DefaultTableModel();
+    public Menu_Arbitros() {
+        initComponents();
+        
+        //Le pone titulo a la pestaña
+        this.setTitle("Menu de Futbol");
+        //Le asigna un tamaño
+        this.setSize(1100, 600);
+        
+        //Crea un string con las columnas de la tabla de Arbitros
+        String tabla [] = {"Internacional", "Tarjetas", "Nombre", "Apellido", "Dni"};
+        //Guarda el string en el modelo de Arbitros
+        modelArbitros.setColumnIdentifiers(tabla);
+        //A la tabla de jugadoras le guarda su modelo correspondiente
+        tablaArbitros.setModel(modelArbitros);
+        
+
+        //Guarda el string en el modelo de funciones
+        modelFunciones.setColumnIdentifiers(tabla);
+        //A la tabla de funciones le guarda su modelo correspondiente
+        tablaFunciones.setModel(modelFunciones);
+        
+        //Variables para poner texto invisible
+        TextPrompt dia = new TextPrompt("dia", txtDia);
+        TextPrompt mes = new TextPrompt("mes", txtMes);
+        TextPrompt anio = new TextPrompt("anio", txtAnio);
+        TextPrompt dni = new TextPrompt("No podrá modificarse", txtDni);
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        fondoPrincipal = new javax.swing.JPanel();
+        pestañas = new javax.swing.JTabbedPane();
+        fondoArbitros = new javax.swing.JPanel();
+        fondoDatos = new javax.swing.JPanel();
+        lblNombre = new javax.swing.JLabel();
+        lblApellido = new javax.swing.JLabel();
+        lblDni = new javax.swing.JLabel();
+        lblNacionalidad = new javax.swing.JLabel();
+        lblNacimiento = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtDni = new javax.swing.JTextField();
+        txtNacionalidad = new javax.swing.JTextField();
+        lblTarjetas = new javax.swing.JLabel();
+        txtDia = new javax.swing.JTextField();
+        txtMes = new javax.swing.JTextField();
+        txtAnio = new javax.swing.JTextField();
+        bttModificar = new javax.swing.JButton();
+        bttCargar = new javax.swing.JButton();
+        bttEliminar = new javax.swing.JButton();
+        CkBttInternacional = new javax.swing.JCheckBox();
+        txtTarjetas = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaArbitros = new javax.swing.JTable();
+        txtBuscar = new javax.swing.JTextField();
+        bttBuscar = new javax.swing.JButton();
+        bttActualizarTabla1 = new javax.swing.JButton();
+        bttVolver = new javax.swing.JButton();
+        fondoFunciones = new javax.swing.JPanel();
+        fondoOpciones = new javax.swing.JPanel();
+        ChkBxFiltroInternacional = new javax.swing.JCheckBox();
+        lblFiltros = new javax.swing.JLabel();
+        bttActualizarFiltro = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaFunciones = new javax.swing.JTable();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        fondoPrincipal.setBackground(new java.awt.Color(255, 204, 204));
+        fondoPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pestañas.setBackground(new java.awt.Color(153, 0, 153));
+        pestañas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        fondoArbitros.setBackground(new java.awt.Color(204, 0, 204));
+        fondoArbitros.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102), 3));
+        fondoArbitros.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNombre.setText("Nombre");
+
+        lblApellido.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblApellido.setText("Apellido");
+
+        lblDni.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDni.setText("Dni");
+
+        lblNacionalidad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNacionalidad.setText("Nacionalidad");
+
+        lblNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNacimiento.setText("Fecha de nacimiento");
+
+        txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        txtApellido.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        txtDni.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        txtNacionalidad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        lblTarjetas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTarjetas.setText("Tarjetas sacadas");
+
+        txtDia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        txtMes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        txtAnio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        bttModificar.setBackground(new java.awt.Color(255, 204, 255));
+        bttModificar.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        bttModificar.setText("Modificar");
+        bttModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttModificarActionPerformed(evt);
+            }
+        });
+
+        bttCargar.setBackground(new java.awt.Color(255, 204, 255));
+        bttCargar.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        bttCargar.setText("Cargar");
+        bttCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttCargarActionPerformed(evt);
+            }
+        });
+
+        bttEliminar.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        bttEliminar.setText("ELIMINAR");
+        bttEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttEliminarActionPerformed(evt);
+            }
+        });
+
+        CkBttInternacional.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        CkBttInternacional.setText("Internacional");
+        CkBttInternacional.setToolTipText("");
+        CkBttInternacional.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        CkBttInternacional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CkBttInternacionalActionPerformed(evt);
+            }
+        });
+
+        txtTarjetas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtTarjetas.setText("0");
+
+        javax.swing.GroupLayout fondoDatosLayout = new javax.swing.GroupLayout(fondoDatos);
+        fondoDatos.setLayout(fondoDatosLayout);
+        fondoDatosLayout.setHorizontalGroup(
+            fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoDatosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoDatosLayout.createSequentialGroup()
+                        .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblApellido)
+                            .addComponent(lblDni))
+                        .addGap(53, 53, 53)
+                        .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(fondoDatosLayout.createSequentialGroup()
+                                .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(CkBttInternacional))
+                            .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(fondoDatosLayout.createSequentialGroup()
+                        .addComponent(lblNombre)
+                        .addGap(53, 53, 53)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblTarjetas))
+                    .addGroup(fondoDatosLayout.createSequentialGroup()
+                        .addComponent(lblNacimiento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondoDatosLayout.createSequentialGroup()
+                        .addComponent(lblNacionalidad)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtTarjetas, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(bttModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bttCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bttEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22))
+        );
+        fondoDatosLayout.setVerticalGroup(
+            fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoDatosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoDatosLayout.createSequentialGroup()
+                        .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNombre)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTarjetas))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblApellido)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CkBttInternacional))
+                        .addGap(11, 11, 11)
+                        .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDni)
+                            .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNacionalidad)
+                            .addComponent(txtNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNacimiento)))
+                    .addComponent(txtTarjetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(fondoDatosLayout.createSequentialGroup()
+                        .addComponent(bttModificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bttCargar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bttEliminar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        fondoArbitros.add(fondoDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 21, -1, -1));
+
+        tablaArbitros.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tablaArbitros);
+
+        fondoArbitros.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 790, 200));
+
+        txtBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        fondoArbitros.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 192, -1));
+
+        bttBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bttBuscar.setText("Buscar");
+        bttBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttBuscarActionPerformed(evt);
+            }
+        });
+        fondoArbitros.add(bttBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 192, -1));
+
+        bttActualizarTabla1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bttActualizarTabla1.setText("Actualizar Tabla");
+        bttActualizarTabla1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttActualizarTabla1ActionPerformed(evt);
+            }
+        });
+        fondoArbitros.add(bttActualizarTabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 192, -1));
+
+        bttVolver.setBackground(new java.awt.Color(102, 102, 255));
+        bttVolver.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bttVolver.setText("Volver");
+        bttVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttVolverActionPerformed(evt);
+            }
+        });
+        fondoArbitros.add(bttVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 192, -1));
+
+        pestañas.addTab("Menu", fondoArbitros);
+
+        fondoFunciones.setBackground(new java.awt.Color(204, 0, 204));
+        fondoFunciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102), 3));
+        fondoFunciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ChkBxFiltroInternacional.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ChkBxFiltroInternacional.setText("Es internacional");
+        ChkBxFiltroInternacional.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        ChkBxFiltroInternacional.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ChkBxFiltroInternacionalStateChanged(evt);
+            }
+        });
+        ChkBxFiltroInternacional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkBxFiltroInternacionalActionPerformed(evt);
+            }
+        });
+
+        lblFiltros.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblFiltros.setText("Filtros");
+
+        bttActualizarFiltro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bttActualizarFiltro.setText("Actualizar");
+        bttActualizarFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttActualizarFiltroActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout fondoOpcionesLayout = new javax.swing.GroupLayout(fondoOpciones);
+        fondoOpciones.setLayout(fondoOpcionesLayout);
+        fondoOpcionesLayout.setHorizontalGroup(
+            fondoOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoOpcionesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(fondoOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lblFiltros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ChkBxFiltroInternacional, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bttActualizarFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
+        );
+        fondoOpcionesLayout.setVerticalGroup(
+            fondoOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoOpcionesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ChkBxFiltroInternacional)
+                .addGap(18, 18, 18)
+                .addComponent(bttActualizarFiltro)
+                .addContainerGap(290, Short.MAX_VALUE))
+        );
+
+        fondoFunciones.add(fondoOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 260, 430));
+
+        tablaFunciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tablaFunciones);
+
+        fondoFunciones.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 17, 720, 430));
+
+        pestañas.addTab("Funciones", fondoFunciones);
+
+        fondoPrincipal.add(pestañas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 1040, 510));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(fondoPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(fondoPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void bttModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttModificarActionPerformed
+        //Crea el lanza error
+        boolean error = false;
+        //Crea el cartel de muestra error
+        JDialog informe = new JDialog(this, "Error!", true);
+        informe.setSize(200, 150);
+        informe.setLayout(new GridLayout(2, 1));
+        informe.setLocationRelativeTo(this);
+        //
+        String dni = txtDni.getText();
+        ControladorArbitros controlador = new ControladorArbitros();
+        controlador.setArbitro(controlador.getArbitroPorDni(dni));
+        controlador.eliminarArbitroLista(dni);
+        //Va guardando los datos obtenidos en el controlador, en caso de tener
+        //un campo vacio, manda error con la variable error
+        controlador.setArbitroNombre(txtNombre.getText());
+        if(controlador.getArbitroNombre().isEmpty()){
+            error = true;
+        }
+        controlador.setArbitroApellido(txtApellido.getText());
+        if(controlador.getArbitroApellido().isEmpty()){
+            error = true;
+        }
+        //Ver que onda
+        controlador.setArbitroNacimiento(Integer.parseInt((String)txtDia.getText()),
+               Integer.parseInt((String)txtMes.getText()), Integer.parseInt((String)txtAnio.getText()));
+        if(controlador.getArbitroNacimientoAnio()== 0){
+                error = true;
+            }
+        controlador.setArbitroNacionalidad(txtNacionalidad.getText());
+        if(controlador.getArbitroNacionalidad().isEmpty()){
+            error = true;
+        }
+        controlador.setArbitroDni(txtDni.getText());
+        if(controlador.getArbitroDni().isEmpty()){
+            error = true;
+        }
+        controlador.setArbitroInternacional(CkBttInternacional.isSelected());
+        if(controlador.getArbitrosInternacionales() == null){
+            error = true;
+        }
+        controlador.setArbitroTarjetas(Integer.parseInt((String)txtTarjetas.getText()));
+        if(controlador.getArbitroTarjetas() < 0){
+            error = true;
+        }
+        //Aca es cuando evalua si muestra error o cargado con exito
+        if (error) {
+            JOptionPane.showMessageDialog(this,"Complete todos los campos.");
+        } else {
+            //Guarda la jugadora a la lista
+            controlador.setArbitroLista();
+            refrescarTablaArbitros();
+            JOptionPane.showMessageDialog(this,"Arbitro modificado con exito.");
+        }
+
+        //Refresca los txt, los deja sin contenido escrito por el usuario
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtNacionalidad.setText("");
+        txtDia.setText("");
+        txtMes.setText("");
+        txtAnio.setText("");
+        txtDni.setText("");
+        txtTarjetas.setText("");
+        CkBttInternacional.setSelected(false);
+    }//GEN-LAST:event_bttModificarActionPerformed
+
+    private void bttCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttCargarActionPerformed
+
+         //Crea el lanza error
+        boolean error = false;
+            //Crea el cartel de muestra error
+        JDialog informe = new JDialog(this, "Error!", true);
+        informe.setSize(200, 150);
+        informe.setLayout(new GridLayout(2, 1));
+        informe.setLocationRelativeTo(this);
+
+         //Crea un nuevo controlador de arbitros
+        ControladorArbitros controlador = new ControladorArbitros();
+            //Va guardando los datos obtenidos en el controlador, en caso de tener
+            //un campo vacio, manda error con la variable error
+        controlador.setArbitroNombre(txtNombre.getText());
+        if(controlador.getArbitroNombre().isEmpty()){
+            error = true;
+        }
+        controlador.setArbitroApellido(txtApellido.getText());
+        if(controlador.getArbitroApellido().isEmpty()){
+            error = true;
+        }
+        //Ver que onda
+        controlador.setArbitroNacimiento(Integer.parseInt((String)txtDia.getText()),
+               Integer.parseInt((String)txtMes.getText()), Integer.parseInt((String)txtAnio.getText()));
+        if(controlador.getArbitroNacimientoAnio()== 0){
+                error = true;
+            }
+        controlador.setArbitroNacionalidad(txtNacionalidad.getText());
+        if(controlador.getArbitroNacionalidad().isEmpty()){
+            error = true;
+        }
+        controlador.setArbitroDni(txtDni.getText());
+        if(controlador.getArbitroDni().isEmpty()){
+            error = true;
+        }
+        controlador.setArbitroInternacional(CkBttInternacional.isSelected());
+        if(controlador.getArbitrosInternacionales() == null){
+            error = true;
+        }
+        controlador.setArbitroTarjetas(Integer.parseInt((String)txtTarjetas.getText()));
+        if(controlador.getArbitroTarjetas() < 0){
+            error = true;
+        }
+        //Aca es cuando evalua si muestra error o cargado con exito
+        if (error) {
+            JOptionPane.showMessageDialog(this,"Complete todos los campos.");
+        } else {
+            //Guarda el Arbitro a la lista
+            controlador.setArbitroLista();
+            
+            refrescarTablaArbitros();
+            JOptionPane.showMessageDialog(this,"Arbitro cargado con exito.");
+        }
+
+        //Refresca los txt, los deja sin contenido escrito por el usuario
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtNacionalidad.setText("");
+        txtDia.setText("");
+        txtMes.setText("");
+        txtAnio.setText("");
+        txtDni.setText("");
+        txtTarjetas.setText("");
+        CkBttInternacional.setSelected(false);
+    }//GEN-LAST:event_bttCargarActionPerformed
+
+    private void bttEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttEliminarActionPerformed
+        //Crea el lanza error
+        boolean error = false;
+        //Crea el cartel de muestra error
+        JDialog informe = new JDialog(this, "Error!", true);
+        informe.setSize(200, 150);
+        informe.setLayout(new GridLayout(2, 1));
+        informe.setLocationRelativeTo(this);
+
+        //Ver que onda
+        String dni = txtDni.getText();
+        ControladorArbitros controlador = new ControladorArbitros();
+        try{
+            controlador.eliminarArbitroLista(dni);
+        } catch(Exception e){
+            error = true;
+        }
+        if (error){
+            JOptionPane.showMessageDialog(this,"No se pudo eliminar.");
+        }
+        else {
+            JOptionPane.showMessageDialog(this,"Arbitro eliminado.");
+            refrescarTablaArbitros();
+        }
+    }//GEN-LAST:event_bttEliminarActionPerformed
+
+    private void bttBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttBuscarActionPerformed
+        // TODO add your handling code here:
+        String nombre = txtBuscar.getText();
+        ControladorArbitros controlador = new ControladorArbitros();
+        //Crea el objeto que tendra las filas de la tabla
+        Object[] fila = new Object[5];
+        //Elimina contenido anterior de la tabla
+        while (modelArbitros.getRowCount() > 0) {
+        modelArbitros.removeRow(0);
+            }
+        for (int i = 0; i < controlador.getArbitroSoloPorNombre(nombre).size(); i++) {
+            controlador.setArbitroDeListaExterna(controlador.getArbitroSoloPorNombre(nombre), i);
+            //Va guardando los datos correspondientes en las filas del objeto
+            fila[0] = Boolean.toString(controlador.isArbitroInternacional());
+            fila[1] = Integer.toString(controlador.getArbitroTarjetas());
+            fila[2] = controlador.getArbitroNombre();
+            fila[3] = controlador.getArbitroApellido();
+            fila[4] = controlador.getArbitroDni();
+            //Guarda las filas en la tabla
+            modelArbitros.addRow(fila);
+        }
+    }//GEN-LAST:event_bttBuscarActionPerformed
+    
+//Metodo para refrescar la tabla de arbitros
+    public void refrescarTablaArbitros(){
+        //Crea un controlador de arbitros
+        ControladorArbitros controlador = new ControladorArbitros();
+        //Crea el objeto que tendra las filas de la tabla
+        String[] fila = new String[5];
+        //Elimina contenido anterior de la tabla
+        while (modelArbitros.getRowCount() > 0) {
+            modelArbitros.removeRow(0);
+        }
+        //Recorre la lista del controlador
+        for (int i = 0; i < controlador.getSizeLista(); i++) {
+            //Guarda la jugadora de dicho lugar de la fila en la variable jugadora del controlador
+            controlador.setArbitro(controlador.getArbitroLista(i));
+            //Va guardando los datos correspondientes en las filas del objeto
+            fila[0] = Boolean.toString(controlador.isArbitroInternacional());
+            fila[1] = Integer.toString(controlador.getArbitroTarjetas());
+            fila[2] = controlador.getArbitroNombre();
+            fila[3] = controlador.getArbitroApellido();
+            fila[4] = controlador.getArbitroDni();
+            //Guarda las filas en la tabla
+            modelArbitros.addRow(fila);
+        } 
+    }
+    public void refrescarTablaFunciones(){
+        //Crea un controlador de arbitros
+        ControladorArbitros controlador = new ControladorArbitros();
+        //Crea el objeto que tendra las filas de la tabla
+        String[] fila = new String[5];
+        //Elimina contenido anterior de la tabla
+        while (modelFunciones.getRowCount() > 0) {
+            modelFunciones.removeRow(0);
+        }
+        if((boolean)ChkBxFiltroInternacional.isSelected() == true){
+            //Recorre la lista del controlador
+            for (int i = 0; i < controlador.getArbitrosInternacionales().size(); i++) {
+              //Guarda la jugadora de dicho lugar de la fila en la variable jugadora del controlador
+              controlador.setArbitroDeListaExterna(controlador.getArbitrosInternacionales(),i);
+              //Va guardando los datos correspondientes en las filas del objeto
+              fila[0] = Boolean.toString(controlador.isArbitroInternacional());
+              fila[1] = Integer.toString(controlador.getArbitroTarjetas());
+              fila[2] = controlador.getArbitroNombre();
+              fila[3] = controlador.getArbitroApellido();
+              fila[4] = controlador.getArbitroDni();
+               //Guarda las filas en la tabla
+              modelFunciones.addRow(fila);
+            } 
+        }
+        else{
+            for (int i = 0; i < controlador.getSizeLista(); i++) {
+            //Guarda la jugadora de dicho lugar de la fila en la variable jugadora del controlador
+            controlador.setArbitroDesdeLista(i);
+            if(controlador.isArbitroInternacional() == false){
+            //Va guardando los datos correspondientes en las filas del objeto
+            fila[0] = Boolean.toString(controlador.isArbitroInternacional());
+            fila[1] = Integer.toString(controlador.getArbitroTarjetas());
+            fila[2] = controlador.getArbitroNombre();
+            fila[3] = controlador.getArbitroApellido();
+            fila[4] = controlador.getArbitroDni();
+            //Guarda las filas en la tabla
+            modelFunciones.addRow(fila);
+            }
+            }
+        }
+    }
+    private void CkBttInternacionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CkBttInternacionalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CkBttInternacionalActionPerformed
+
+    private void ChkBxFiltroInternacionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkBxFiltroInternacionalActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_ChkBxFiltroInternacionalActionPerformed
+
+    private void ChkBxFiltroInternacionalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ChkBxFiltroInternacionalStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ChkBxFiltroInternacionalStateChanged
+
+    private void bttActualizarFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttActualizarFiltroActionPerformed
+        // TODO add your handling code here:
+        refrescarTablaFunciones();
+    }//GEN-LAST:event_bttActualizarFiltroActionPerformed
+
+    private void bttActualizarTabla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttActualizarTabla1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttActualizarTabla1ActionPerformed
+
+    private void bttVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttVolverActionPerformed
+        // TODO add your handling code here:
+        VentanaPrincipal inicio = new VentanaPrincipal();
+        inicio.setVisible(true);
+        inicio.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_bttVolverActionPerformed
+
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox ChkBxFiltroInternacional;
+    private javax.swing.JCheckBox CkBttInternacional;
+    private javax.swing.JButton bttActualizarFiltro;
+    private javax.swing.JButton bttActualizarTabla1;
+    private javax.swing.JButton bttBuscar;
+    private javax.swing.JButton bttCargar;
+    private javax.swing.JButton bttEliminar;
+    private javax.swing.JButton bttModificar;
+    private javax.swing.JButton bttVolver;
+    private javax.swing.JPanel fondoArbitros;
+    private javax.swing.JPanel fondoDatos;
+    private javax.swing.JPanel fondoFunciones;
+    private javax.swing.JPanel fondoOpciones;
+    private javax.swing.JPanel fondoPrincipal;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblDni;
+    private javax.swing.JLabel lblFiltros;
+    private javax.swing.JLabel lblNacimiento;
+    private javax.swing.JLabel lblNacionalidad;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblTarjetas;
+    private javax.swing.JTabbedPane pestañas;
+    private javax.swing.JTable tablaArbitros;
+    private javax.swing.JTable tablaFunciones;
+    private javax.swing.JTextField txtAnio;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtDia;
+    private javax.swing.JTextField txtDni;
+    private javax.swing.JTextField txtMes;
+    private javax.swing.JTextField txtNacionalidad;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTarjetas;
+    // End of variables declaration//GEN-END:variables
+}
