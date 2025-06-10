@@ -9,7 +9,6 @@ import Model.Arbitro;
 import java.util.HashMap;
 import Controlador.ControladorJugadoras;
 import Vista.VentanaPrincipal;
-import Model.Fecha;
 
 public class PMIFutbol {
     public static void main(String[] args) {
@@ -21,14 +20,21 @@ public class PMIFutbol {
         System.out.println(listaJu);
         listaAr=contArc.inicioMemoriaArbitros();
         System.out.println(listaAr);
-       Fecha fe = new Fecha(1,2,3);
-        Jugadora ju = new Jugadora("Delantera", "Boca", 4, 4, 4, "Nombre", 
-                "Apellido", fe, "Argentina", "46439");
-        listaJu.add(ju);
         contArc.guardarJuEnArchivo(listaJu);
         System.out.println(listaJu);
         HashMap<String, Integer> equipos = new HashMap<>();
+        equipos.put("Boca",0);
+        equipos.put("River",0);
+        equipos.put("Racing",0);
+        equipos.put("Independiente",0);
+        equipos.put("Tigre",0);
+        equipos.put("Juventud",0);
+        equipos.put("Estudiantes",0);
+        equipos.put("Platense",0);
+        equipos.put("Banfield",0);
+        equipos.put("Lanus",0);
         ControladorJugadoras controladorJu = new ControladorJugadoras(equipos, listaJu);
+        controladorJu.setEquipos();
         VentanaPrincipal vista = new VentanaPrincipal();
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
