@@ -17,18 +17,20 @@ public class PMIFutbol {
         ArrayList <Arbitro> listaAr = new ArrayList <>();
         ControladorArbitros contrlArb = new ControladorArbitros(listaAr);
         ControladorArchivo contArc = new ControladorArchivo();
-        contArc.incioMemoriaJugadoras(listaJu);
+        listaJu = contArc.incioMemoriaJugadoras(listaJu);
         contArc.inicioMemoriaArbitros(listaAr);
         Fecha fe = new Fecha(1,2,3);
         Jugadora ju = new Jugadora("Delantera", "Boca", 4, 4, 4, "Nombre", 
                 "Apellido", fe, "Argentina", "46439");
-        listaJu.add(ju);
+        //listaJu.add(ju);
+        System.out.println(listaJu);
         contArc.guardarJuEnArchivo(listaJu);
         HashMap<String, Integer> equipos = new HashMap<>();
         ControladorJugadoras controladorJu = new ControladorJugadoras(equipos, listaJu);
         VentanaPrincipal vista = new VentanaPrincipal();
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
+        System.out.println(listaJu);
     }
     
 }

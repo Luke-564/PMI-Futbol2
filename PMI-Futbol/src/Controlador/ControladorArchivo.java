@@ -35,12 +35,11 @@ public class ControladorArchivo {
     public ControladorArchivo() {
     }
     
-public void incioMemoriaJugadoras(ArrayList<Jugadora> lista){ //Metodo que inicializa la lista de Jugadoras
+public ArrayList<Jugadora> incioMemoriaJugadoras(ArrayList<Jugadora> lista){ //Metodo que inicializa la lista de Jugadoras
     
       try {
         if (aj.createNewFile()) {
             System.out.println("Archivo creado.");
-            return; // El archivo está vacío, no hay nada para leer aún
         } else {
             System.out.println("Archivo existente.");
         }
@@ -72,6 +71,7 @@ public void incioMemoriaJugadoras(ArrayList<Jugadora> lista){ //Metodo que inici
     } catch (IOException e) {
         e.printStackTrace();
     }
+    return lista;
 }
 
 public void inicioMemoriaArbitros(ArrayList<Arbitro> lista){
