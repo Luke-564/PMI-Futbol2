@@ -82,7 +82,8 @@ public class Menu extends javax.swing.JFrame {
         tablaJugadoras = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
         bttBuscar = new javax.swing.JButton();
-        bttActualizarTabla = new javax.swing.JButton();
+        bttVolver = new javax.swing.JButton();
+        bttActualizarTabla1 = new javax.swing.JButton();
         fondoFunciones = new javax.swing.JPanel();
         fondoOpciones = new javax.swing.JPanel();
         bttCantJu = new javax.swing.JRadioButton();
@@ -345,14 +346,24 @@ public class Menu extends javax.swing.JFrame {
         });
         fondoJugadoras.add(bttBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 192, -1));
 
-        bttActualizarTabla.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        bttActualizarTabla.setText("Actualizar Tabla");
-        bttActualizarTabla.addActionListener(new java.awt.event.ActionListener() {
+        bttVolver.setBackground(new java.awt.Color(102, 102, 255));
+        bttVolver.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bttVolver.setText("Volver");
+        bttVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bttActualizarTablaActionPerformed(evt);
+                bttVolverActionPerformed(evt);
             }
         });
-        fondoJugadoras.add(bttActualizarTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 192, -1));
+        fondoJugadoras.add(bttVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 192, -1));
+
+        bttActualizarTabla1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bttActualizarTabla1.setText("Actualizar Tabla");
+        bttActualizarTabla1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttActualizarTabla1ActionPerformed(evt);
+            }
+        });
+        fondoJugadoras.add(bttActualizarTabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 192, -1));
 
         pestañas.addTab("Menu", fondoJugadoras);
 
@@ -713,11 +724,14 @@ public class Menu extends javax.swing.JFrame {
         txtDni.setText("");
     }//GEN-LAST:event_bttCargarActionPerformed
 
-    //Boton de actualizar la tabla de jugadoras
-    private void bttActualizarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttActualizarTablaActionPerformed
+    //Boton de volver a la Ventana Principal
+    private void bttVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttVolverActionPerformed
         // TODO add your handling code here:
-        refrescarTablaJugadoras();
-    }//GEN-LAST:event_bttActualizarTablaActionPerformed
+        VentanaPrincipal inicio = new VentanaPrincipal();
+        inicio.setVisible(true);
+        inicio.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_bttVolverActionPerformed
 
     //Boton de Actualizar datos de la jugadora
     private void bttModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttModificarActionPerformed
@@ -846,6 +860,10 @@ public class Menu extends javax.swing.JFrame {
             modelJugadoras.addRow(fila);
         }
     }//GEN-LAST:event_bttBuscarActionPerformed
+
+    private void bttActualizarTabla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttActualizarTabla1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttActualizarTabla1ActionPerformed
     
     //Metodo para refrescar la tabla de jugadoras
     public final void refrescarTablaJugadoras(){
@@ -899,7 +917,7 @@ public class Menu extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bttActualizarTabla;
+    private javax.swing.JButton bttActualizarTabla1;
     private javax.swing.JButton bttBuscar;
     private javax.swing.JButton bttBuscarCantidadGoles;
     private javax.swing.JButton bttBuscarJugadoras;
@@ -913,6 +931,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JRadioButton bttJugadorasPosicion;
     private javax.swing.JRadioButton bttMasExpu;
     private javax.swing.JButton bttModificar;
+    private javax.swing.JButton bttVolver;
     private javax.swing.JPanel cantGol;
     private javax.swing.JPanel cantJu;
     private javax.swing.JComboBox<String> cboClub;
