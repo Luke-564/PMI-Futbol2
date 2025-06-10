@@ -206,6 +206,11 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         txtTarjetas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtTarjetas.setForeground(new java.awt.Color(255, 255, 255));
         txtTarjetas.setText("0");
+        txtTarjetas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTarjetasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout fondoDatosLayout = new javax.swing.GroupLayout(fondoDatos);
         fondoDatos.setLayout(fondoDatosLayout);
@@ -454,46 +459,52 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         informe.setSize(200, 150);
         informe.setLayout(new GridLayout(2, 1));
         informe.setLocationRelativeTo(this);
-        //
+        
         String dni = txtDni.getText();
         ControladorArbitros controlador = new ControladorArbitros();
+            
+        try{
         controlador.setArbitro(controlador.getArbitroPorDni(dni));
         controlador.eliminarArbitroLista(dni);
+        
         //Va guardando los datos obtenidos en el controlador, en caso de tener
         //un campo vacio, manda error con la variable error
         controlador.setArbitroNombre(txtNombre.getText());
         if(controlador.getArbitroNombre().isEmpty()){
-            error = true;
+            throw new RuntimeException();
         }
         controlador.setArbitroApellido(txtApellido.getText());
         if(controlador.getArbitroApellido().isEmpty()){
-            error = true;
+            throw new RuntimeException();
         }
-        //Ver que onda
-        controlador.setArbitroNacimiento(Integer.parseInt((String)txtDia.getText()),
-               Integer.parseInt((String)txtMes.getText()), Integer.parseInt((String)txtAnio.getText()));
-        if(controlador.getArbitroNacimientoAnio()== 0){
-                error = true;
-            }
         controlador.setArbitroNacionalidad(txtNacionalidad.getText());
         if(controlador.getArbitroNacionalidad().isEmpty()){
-            error = true;
+            throw new RuntimeException();
         }
         controlador.setArbitroDni(txtDni.getText());
         if(controlador.getArbitroDni().isEmpty()){
-            error = true;
+            throw new RuntimeException();
         }
         controlador.setArbitroInternacional(CkBttInternacional.isSelected());
         if(controlador.getArbitrosInternacionales() == null){
-            error = true;
+            throw new RuntimeException();
         }
+        controlador.setArbitroNacimiento(Integer.parseInt((String)txtDia.getText()),
+               Integer.parseInt((String)txtMes.getText()), Integer.parseInt((String)txtAnio.getText()));
+        if(controlador.getArbitroNacimientoAnio()== 0){
+                throw new RuntimeException();
+            }
         controlador.setArbitroTarjetas(Integer.parseInt((String)txtTarjetas.getText()));
         if(controlador.getArbitroTarjetas() < 0){
+            throw new RuntimeException();
+        }
+        }
+        catch(Exception e){
             error = true;
         }
         //Aca es cuando evalua si muestra error o cargado con exito
         if (error) {
-            JOptionPane.showMessageDialog(this,"Complete todos los campos.");
+            JOptionPane.showMessageDialog(this,"Campos incompletos o erroneos. Posiblemente el dni sea incorrecto o no exista");
         } else {
             //Guarda la jugadora a la lista
             controlador.setArbitroLista();
@@ -535,12 +546,6 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         if(controlador.getArbitroApellido().isEmpty()){
             error = true;
         }
-        //Ver que onda
-        controlador.setArbitroNacimiento(Integer.parseInt((String)txtDia.getText()),
-               Integer.parseInt((String)txtMes.getText()), Integer.parseInt((String)txtAnio.getText()));
-        if(controlador.getArbitroNacimientoAnio()== 0){
-                error = true;
-            }
         controlador.setArbitroNacionalidad(txtNacionalidad.getText());
         if(controlador.getArbitroNacionalidad().isEmpty()){
             error = true;
@@ -553,13 +558,24 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         if(controlador.getArbitrosInternacionales() == null){
             error = true;
         }
+        
+        try{
         controlador.setArbitroTarjetas(Integer.parseInt((String)txtTarjetas.getText()));
         if(controlador.getArbitroTarjetas() < 0){
             error = true;
         }
+        controlador.setArbitroNacimiento(Integer.parseInt((String)txtDia.getText()),
+               Integer.parseInt((String)txtMes.getText()), Integer.parseInt((String)txtAnio.getText()));
+        if(controlador.getArbitroNacimientoAnio()== 0){
+                error = true;
+            }
+        }
+        catch(Exception e){
+            error = true;
+        }
         //Aca es cuando evalua si muestra error o cargado con exito
         if (error) {
-            JOptionPane.showMessageDialog(this,"Complete todos los campos.");
+            JOptionPane.showMessageDialog(this,"Campos incompletos o erroneos.");
         } else {
             //Guarda el Arbitro a la lista
             controlador.setArbitroLista();
@@ -606,6 +622,16 @@ public class Menu_Arbitros extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Arbitro eliminado.");
             refrescarTablaArbitros();
         }
+                //Refresca los txt, los deja sin contenido escrito por el usuario
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtNacionalidad.setText("");
+        txtDia.setText("");
+        txtMes.setText("");
+        txtAnio.setText("");
+        txtDni.setText("");
+        txtTarjetas.setText("");
+        CkBttInternacional.setSelected(false);
     }//GEN-LAST:event_bttEliminarActionPerformed
 
     private void bttBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttBuscarActionPerformed
@@ -613,7 +639,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         String nombre = txtBuscar.getText();
         ControladorArbitros controlador = new ControladorArbitros();
         //Crea el objeto que tendra las filas de la tabla
-        Object[] fila = new Object[5];
+        Object[] fila = new Object[6];
         //Elimina contenido anterior de la tabla
         while (modelArbitros.getRowCount() > 0) {
         modelArbitros.removeRow(0);
@@ -626,6 +652,8 @@ public class Menu_Arbitros extends javax.swing.JFrame {
             fila[2] = controlador.getArbitroNombre();
             fila[3] = controlador.getArbitroApellido();
             fila[4] = controlador.getArbitroDni();
+            fila[5] = (Integer.toString(controlador.getArbitroNacimientoDia())+"/"+Integer.toString(controlador.getArbitroNacimientoMes())+"/"+
+                        Integer.toString(controlador.getArbitroNacimientoAnio()));
             //Guarda las filas en la tabla
             modelArbitros.addRow(fila);
         }
@@ -730,6 +758,10 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         this.setVisible(false);
     
     }//GEN-LAST:event_bttVolverActionPerformed
+
+    private void txtTarjetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTarjetasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTarjetasActionPerformed
 
     /**
      * @param args the command line arguments
