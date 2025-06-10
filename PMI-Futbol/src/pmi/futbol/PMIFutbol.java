@@ -13,18 +13,20 @@ import Model.Fecha;
 
 public class PMIFutbol {
     public static void main(String[] args) {
-        ArrayList <Jugadora> listaJu = new ArrayList <>();
+        ArrayList <Jugadora> listaJu = new ArrayList<>();
         ArrayList <Arbitro> listaAr = new ArrayList <>();
         ControladorArbitros contrlArb = new ControladorArbitros(listaAr);
         ControladorArchivo contArc = new ControladorArchivo();
-        listaJu = contArc.incioMemoriaJugadoras(listaJu);
-        contArc.inicioMemoriaArbitros(listaAr);
-        Fecha fe = new Fecha(1,2,3);
+        listaJu = contArc.incioMemoriaJugadoras();
+        System.out.println(listaJu);
+        listaAr=contArc.inicioMemoriaArbitros();
+        System.out.println(listaAr);
+       Fecha fe = new Fecha(1,2,3);
         Jugadora ju = new Jugadora("Delantera", "Boca", 4, 4, 4, "Nombre", 
                 "Apellido", fe, "Argentina", "46439");
-        //listaJu.add(ju);
-        System.out.println(listaJu);
+        listaJu.add(ju);
         contArc.guardarJuEnArchivo(listaJu);
+        System.out.println(listaJu);
         HashMap<String, Integer> equipos = new HashMap<>();
         ControladorJugadoras controladorJu = new ControladorJugadoras(equipos, listaJu);
         VentanaPrincipal vista = new VentanaPrincipal();

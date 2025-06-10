@@ -1,5 +1,6 @@
 package Controlador;
 
+// Paquetes necesarios
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -14,7 +15,6 @@ public class ControladorArchivo {
     
     File aj = new File("PMI-FutbolJugadoras.txt");
     File aa = new File("PMI-FutbolArbitros.txt");
-    boolean fin = false;
     
     public void setAj(File aj) {
         this.aj = aj;
@@ -35,10 +35,11 @@ public class ControladorArchivo {
     public ControladorArchivo() {
     }
     
-public ArrayList<Jugadora> incioMemoriaJugadoras(ArrayList<Jugadora> lista){ //Metodo que inicializa la lista de Jugadoras
-    
+public ArrayList<Jugadora> incioMemoriaJugadoras(){ //Metodo que inicializa la lista de Jugadoras
+      ArrayList<Jugadora> lista = new ArrayList<>();//Variables auxiliares
+      String reng; //string renglon axiliar
       try {
-        if (aj.createNewFile()) {
+        if (aj.createNewFile()) { //varifia que exista el archivo, y si no, lo crea
             System.out.println("Archivo creado.");
         } else {
             System.out.println("Archivo existente.");
@@ -49,21 +50,20 @@ public ArrayList<Jugadora> incioMemoriaJugadoras(ArrayList<Jugadora> lista){ //M
       }
     
     try(BufferedReader br = new BufferedReader(new FileReader(aj))) { //creo un buffer para leer renglones
-      String reng; //string renglon axiliar
-      while((reng=br.readLine())!=null){
+      while((reng=br.readLine())!=null){//mientras renglon sea distinto de nulo
         String[] atr=reng.split(","); // atr: Atrivutos jejejejojojojujuju
-        if(atr.length==11){ 
+        if(atr.length==12){ 
             Jugadora jaux = new Jugadora();
             jaux.setNombre(atr[0]);
             jaux.setApellido(atr[1]);
-            jaux.setNacimiento(Integer.parseInt(atr[2]),Integer.parseInt(atr[3]),Integer.parseInt(atr[4]));
+            jaux.setNacimiento(Integer.parseInt(atr[2].trim()),Integer.parseInt(atr[3].trim()),Integer.parseInt(atr[4].trim()));
             jaux.setDni(atr[5]);
             jaux.setNacionalidad(atr[6]);           /*hasta acá, el set de Persona*/
             jaux.setPosicion(atr[7]);
             jaux.setClub(atr[8]);
-            jaux.setGoles(Integer.parseInt(atr[9]));
-            jaux.setT_Amarillas(Integer.parseInt(atr[10]));
-            jaux.setT_Rojas(Integer.parseInt(atr[11]));
+            jaux.setGoles(Integer.parseInt(atr[9].trim()));
+            jaux.setT_Amarillas(Integer.parseInt(atr[10].trim()));
+            jaux.setT_Rojas(Integer.parseInt(atr[11].trim()));
             lista.add(jaux);
         }
       }
@@ -74,12 +74,12 @@ public ArrayList<Jugadora> incioMemoriaJugadoras(ArrayList<Jugadora> lista){ //M
     return lista;
 }
 
-public void inicioMemoriaArbitros(ArrayList<Arbitro> lista){
-
+public ArrayList<Arbitro> inicioMemoriaArbitros(){
+    ArrayList<Arbitro> lista = new ArrayList<>(); // variables aux
+    String reng;
     try {
         if (aa.createNewFile()) {
             System.out.println("Archivo creado.");
-            return; // El archivo está vacío, no hay nada para leer aún
         } else {
             System.out.println("Archivo existente.");
         }
@@ -89,17 +89,16 @@ public void inicioMemoriaArbitros(ArrayList<Arbitro> lista){
       }
     
     try(BufferedReader br = new BufferedReader(new FileReader(aa))){
-    String reng;
     while((reng=br.readLine())!=null){
         String[] atr=reng.split(","); // atr: Atrivutos jejejejojojojujuju
-        if(atr.length==8){
+        if(atr.length==9){
             Arbitro Aaux=new Arbitro();
             Aaux.setNombre(atr[0]);//nombre
             Aaux.setApellido(atr[1]);//apellido
-            Aaux.setNacimiento(Integer.parseInt(atr[2]),Integer.parseInt(atr[3]),Integer.parseInt(atr[4])); //¿Como se vamos a guardar nacimiento? creo que deberiamos cambiar el toString para que guarde como dia,mes,año
+            Aaux.setNacimiento(Integer.parseInt(atr[2].trim()),Integer.parseInt(atr[3].trim()),Integer.parseInt(atr[4].trim())); //¿Como se vamos a guardar nacimiento? creo que deberiamos cambiar el toString para que guarde como dia,mes,año
             Aaux.setDni(atr[5]);                              /*hasta acá lo de persona*/
             Aaux.setNacionalidad(atr[6]);
-            Aaux.setTarjetas(Integer.parseInt(atr[7]));
+            Aaux.setTarjetas(Integer.parseInt(atr[7].trim()));
             if(atr[8].equals("true")){
                 Aaux.setInternacional(true);
             }
@@ -114,55 +113,29 @@ public void inicioMemoriaArbitros(ArrayList<Arbitro> lista){
 catch(IOException e){
     e.printStackTrace();
 }
+    return lista;
 }
 
-public void guardarJuEnArchivo(ArrayList<Jugadora> ju){
-try(BufferedReader br = new BufferedReader(new FileReader(aj))){
-    String reng;
-    while((reng=br.readLine())!=null){ 
-        if(reng.isEmpty()){
-            fin = true;
-            break;
-        }
-    }
-}
-catch(IOException e){
-    e.printStackTrace();
-}
-try (BufferedWriter bw = new BufferedWriter(new FileWriter(aj,true))){ // new FileWriter(aa,true) es abrir el achivo en modo apend
-    if (fin = true){
-    for (Jugadora p : ju) {
+public void guardarJuEnArchivo(ArrayList<Jugadora> ju){ // metodo para guardar los datos. Borra el contenido del 
+try (BufferedWriter bw = new BufferedWriter(new FileWriter(aj))){ //archivo existente y lo remplaza con la data
+    for (Jugadora p : ju) {                             // del  Arreglo 
                 bw.write(p.toString());
                 bw.newLine(); // salto de línea
             }
-}
 }    
 catch(IOException e){
     e.printStackTrace();
 }
 }
 
-public void guardarArbEnArchivo(ArrayList<Arbitro> arr){
-try(BufferedReader br = new BufferedReader(new FileReader(aa))){
-    String reng;
-    while((reng=br.readLine())!=null){ 
-        if(reng.isEmpty()){
-            fin = true;
-            break;
-        }
-    }
-}
-catch(IOException e){
-    e.printStackTrace();
-}
-try (BufferedWriter bw = new BufferedWriter(new FileWriter(aa,true))){ // new FileWriter(aa,true) es abrir el achivo en modo apend
-    if (fin = true){
-    for (Arbitro p : arr) {
+public void guardarArbEnArchivo(ArrayList<Arbitro> arr){// metodo para guardar los datos. Borra el contenido del
+try (BufferedWriter bw = new BufferedWriter(new FileWriter(aa))){ //archivo existente y lo remplaza con la data
+    for (Arbitro p : arr) {                             // del  Arreglo 
                 bw.write(p.toString());
                 bw.newLine(); // salto de línea
             }
 }
-}    
+
 catch(IOException e){
     e.printStackTrace();
 }
