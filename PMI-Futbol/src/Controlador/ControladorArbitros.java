@@ -159,11 +159,13 @@ public class ControladorArbitros {
     
         //Elimina el arbitro por codigo, Si se encuentra y lo elimina devuelve verdadero, si no se encuentra devuelve falso
     public void eliminarArbitroLista(String dni){
+        if(this.listaArbitros.isEmpty() == false){
         for(int i = 0; i< this.listaArbitros.size(); i++){
             if(this.listaArbitros.get(i).getDni().equals(dni)){
                 this.listaArbitros.remove(i);
                 return;
             }
+        }
         }
         throw new RuntimeException("No se pudo eliminar al arbitro");
     }
