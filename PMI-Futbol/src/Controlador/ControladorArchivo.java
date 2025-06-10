@@ -12,8 +12,8 @@ import Model.Arbitro;
 
 public class ControladorArchivo {
     
-    File aj = new File("PMI-Futbol2\\PMI-Futbol\\src\\PMI-FutbolJugadoras.txt");
-    File aa = new File("PMI-Futbol2\\PMI-Futbol\\src\\PMI-FutbolArbitros.txt");
+    File aj = new File("C:\\Users\\HP\\OneDrive\\OneDrive\\Escritorio\\Pala\\Maldita Perra Facultad\\2° Año\\Programación 2\\PMI-Futbol2\\PMI-Futbol\\src\\PMI-FutbolJugadoras.txt");
+    File aa = new File("C:\\Users\\HP\\OneDrive\\OneDrive\\Escritorio\\Pala\\Maldita Perra Facultad\\2° Año\\Programación 2\\PMI-Futbol2\\PMI-Futbol\\src\\PMI-FutbolArbitros.txt");
 
     public void setAj(File aj) {
         this.aj = aj;
@@ -49,11 +49,6 @@ public void incioMemoriaJugadoras(ArrayList<Jugadora> lista){ //Metodo que inici
       }
     
     try(BufferedReader br = new BufferedReader(new FileReader(aj))) { //creo un buffer para leer renglones
-      if (aj.createNewFile()) {                                       
-        System.out.println("creado.");// verifico que esté creado el archivo y si no, lo crea
-      } else {
-        System.out.println("existente.");
-      }
       String reng; //string renglon axiliar
       while((reng=br.readLine())!=null){
         String[] atr=reng.split(","); // atr: Atrivutos jejejejojojojujuju
@@ -81,7 +76,7 @@ public void incioMemoriaJugadoras(ArrayList<Jugadora> lista){ //Metodo que inici
 public void inicioMemoriaArbitros(ArrayList<Arbitro> lista){
 
     try {
-        if (aj.createNewFile()) {
+        if (aa.createNewFile()) {
             System.out.println("Archivo creado.");
             return; // El archivo está vacío, no hay nada para leer aún
         } else {
@@ -93,12 +88,6 @@ public void inicioMemoriaArbitros(ArrayList<Arbitro> lista){
       }
     
     try(BufferedReader br = new BufferedReader(new FileReader(aa))){
-    if(aa.createNewFile()){
-        System.out.println("Creado");
-    }
-    else{
-        System.out.println("Existente");
-    }
     String reng;
     while((reng=br.readLine())!=null){
         String[] atr=reng.split(","); // atr: Atrivutos jejejejojojojujuju

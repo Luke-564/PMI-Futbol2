@@ -23,6 +23,7 @@ public class PMIFutbol {
         Jugadora ju = new Jugadora("Delantera", "Boca", 4, 4, 4, "Nombre", 
                 "Apellido", fe, "Argentina", "46439");
         listaJu.add(ju);
+        contArc.guardarJuEnArchivo(listaJu);
         HashMap<String, Integer> equipos = new HashMap<>();
         ControladorJugadoras controladorJu = new ControladorJugadoras(equipos, listaJu);
         VentanaPrincipal vista = new VentanaPrincipal();

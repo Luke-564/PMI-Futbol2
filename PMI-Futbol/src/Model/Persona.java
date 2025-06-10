@@ -26,7 +26,7 @@ public class Persona {
         return apellido;
     }
     public int getNacimientoDia() {
-        return nacimiento.getAnio();
+        return nacimiento.getDia();
     }
     public int getNacimientoMes() {
         return nacimiento.getMes();
