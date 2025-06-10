@@ -613,7 +613,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         String nombre = txtBuscar.getText();
         ControladorArbitros controlador = new ControladorArbitros();
         //Crea el objeto que tendra las filas de la tabla
-        Object[] fila = new Object[5];
+        Object[] fila = new Object[6];
         //Elimina contenido anterior de la tabla
         while (modelArbitros.getRowCount() > 0) {
         modelArbitros.removeRow(0);
@@ -626,6 +626,8 @@ public class Menu_Arbitros extends javax.swing.JFrame {
             fila[2] = controlador.getArbitroNombre();
             fila[3] = controlador.getArbitroApellido();
             fila[4] = controlador.getArbitroDni();
+            fila[5] = (Integer.toString(controlador.getArbitroNacimientoDia())+"/"+Integer.toString(controlador.getArbitroNacimientoMes())+"/"+
+                        Integer.toString(controlador.getArbitroNacimientoAnio()));
             //Guarda las filas en la tabla
             modelArbitros.addRow(fila);
         }
