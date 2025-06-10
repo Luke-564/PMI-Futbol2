@@ -12,7 +12,7 @@ import Model.Arbitro;
 
 public class ControladorArchivo {
     
-    File aj = new File("PMI-Futbol2\\PMI-Futbol\\srcPMI-FutbolJugadoras.txt");
+    File aj = new File("PMI-Futbol2\\PMI-Futbol\\src\\PMI-FutbolJugadoras.txt");
     File aa = new File("PMI-Futbol2\\PMI-Futbol\\src\\PMI-FutbolArbitros.txt");
 
     public void setAj(File aj) {
@@ -35,17 +35,30 @@ public class ControladorArchivo {
     }
     
 public void incioMemoriaJugadoras(ArrayList<Jugadora> lista){ //Metodo que inicializa la lista de Jugadoras
+    
+      try {
+        if (aj.createNewFile()) {
+            System.out.println("Archivo creado.");
+            return; // El archivo está vacío, no hay nada para leer aún
+        } else {
+            System.out.println("Archivo existente.");
+        }
+      }
+      catch(IOException e){
+          e.printStackTrace();
+      }
+    
     try(BufferedReader br = new BufferedReader(new FileReader(aj))) { //creo un buffer para leer renglones
       if (aj.createNewFile()) {                                       
         System.out.println("creado.");// verifico que esté creado el archivo y si no, lo crea
       } else {
         System.out.println("existente.");
       }
-      String reng; //string renglon axiliar 
-      Jugadora jaux = new Jugadora();
+      String reng; //string renglon axiliar
       while((reng=br.readLine())!=null){
         String[] atr=reng.split(","); // atr: Atrivutos jejejejojojojujuju
-        if(atr.length==11){
+        if(atr.length==11){ 
+            Jugadora jaux = new Jugadora();
             jaux.setNombre(atr[0]);
             jaux.setApellido(atr[1]);
             jaux.setNacimiento(Integer.parseInt(atr[2]),Integer.parseInt(atr[3]),Integer.parseInt(atr[4]));
@@ -61,11 +74,25 @@ public void incioMemoriaJugadoras(ArrayList<Jugadora> lista){ //Metodo que inici
       }
       br.close(); //Cuando el bloque de Try termina, el archivo se cierra solo, pero creo que no está de más
     } catch (IOException e) {
+        e.printStackTrace();
     }
 }
 
 public void inicioMemoriaArbitros(ArrayList<Arbitro> lista){
-try(BufferedReader br = new BufferedReader(new FileReader(aa))){
+
+    try {
+        if (aj.createNewFile()) {
+            System.out.println("Archivo creado.");
+            return; // El archivo está vacío, no hay nada para leer aún
+        } else {
+            System.out.println("Archivo existente.");
+        }
+      }
+      catch(IOException e){
+          e.printStackTrace();
+      }
+    
+    try(BufferedReader br = new BufferedReader(new FileReader(aa))){
     if(aa.createNewFile()){
         System.out.println("Creado");
     }
@@ -73,10 +100,10 @@ try(BufferedReader br = new BufferedReader(new FileReader(aa))){
         System.out.println("Existente");
     }
     String reng;
-    Arbitro Aaux=new Arbitro();
     while((reng=br.readLine())!=null){
         String[] atr=reng.split(","); // atr: Atrivutos jejejejojojojujuju
         if(atr.length==8){
+            Arbitro Aaux=new Arbitro();
             Aaux.setNombre(atr[0]);//nombre
             Aaux.setApellido(atr[1]);//apellido
             Aaux.setNacimiento(Integer.parseInt(atr[2]),Integer.parseInt(atr[3]),Integer.parseInt(atr[4])); //¿Como se vamos a guardar nacimiento? creo que deberiamos cambiar el toString para que guarde como dia,mes,año
@@ -94,7 +121,9 @@ try(BufferedReader br = new BufferedReader(new FileReader(aa))){
     }
     br.close(); //Cuando el bloque de Try termina, el archivo se cierra solo, pero creo que no está de más
 }
-catch(IOException e){}
+catch(IOException e){
+    e.printStackTrace();
+}
 }
 
 public void guardarJuEnArchivo(ArrayList<Jugadora> ju){
@@ -105,28 +134,20 @@ try (BufferedWriter bw = new BufferedWriter(new FileWriter(aj))){
             }
 }
 catch(IOException e){
+    e.printStackTrace();
 }
 }
 
-public void guardarArrEnArchivo(ArrayList<Arbitro> arr){
-try (BufferedWriter bw = new BufferedWriter(new FileWriter(aj))){
+public void guardarArbEnArchivo(ArrayList<Arbitro> arr){
+try (BufferedWriter bw = new BufferedWriter(new FileWriter(aa))){
     for (Arbitro p : arr) {
                 bw.write(p.toString());
                 bw.newLine(); // salto de línea
             }
 }
 catch(IOException e){
+    e.printStackTrace();
 }
 }
 
 }
-
-
-    
-    
-
-
-    
-    
-
-

@@ -36,7 +36,7 @@ public class Fecha {
     }
     //metodos
     public String muestraFecha(Fecha para){
-        return " " + para.dia + "/" + para.mes + "/" + para.anio;
+        return para.dia + "," + para.mes + "," + para.anio;
     }
     
     public boolean isEmpty() {
