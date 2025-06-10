@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
+import java.util.ArrayList;
 import Model.Jugadora;
 import Model.Arbitro;
 
@@ -40,7 +41,7 @@ public class ControladorArchivo {
     
     
 
-public void incioMemoriaJugadoras(){ //Metodo que inicializa la lista de Jugadoras
+public void incioMemoriaJugadoras(ArrayList<Jugadora> lista){ //Metodo que inicializa la lista de Jugadoras
     try(BufferedReader br = new BufferedReader(new FileReader(aj))) { //creo un buffer para leer renglones
       if (aj.createNewFile()) {                                       
         System.out.println("creado.");// verifico que esté creado el archivo y si no, lo crea
@@ -61,7 +62,8 @@ public void incioMemoriaJugadoras(){ //Metodo que inicializa la lista de Jugador
             jaux.setClub(atr[8]);
             jaux.setGoles(Integer.parseInt(atr[9]));
             jaux.setT_Amarillas(Integer.parseInt(atr[10]));
-            jaux.setT_Rojas(Integer.parseInt(atr[11]));  
+            jaux.setT_Rojas(Integer.parseInt(atr[11]));
+            lista.add(jaux);
         }
       }
       br.close(); //Cuando el bloque de Try termina, el archivo se cierra solo, pero creo que no está de más
@@ -69,7 +71,7 @@ public void incioMemoriaJugadoras(){ //Metodo que inicializa la lista de Jugador
       System.out.println("Error en archivo de Jugadora");
     }
 }
-public void inicioMemoriaArbitros(){
+public void inicioMemoriaArbitros(ArrayList<Arbitro> lista){
 try(BufferedReader br = new BufferedReader(new FileReader(aa))){
     if(aa.createNewFile()){
         System.out.println("Creado");
@@ -94,6 +96,7 @@ try(BufferedReader br = new BufferedReader(new FileReader(aa))){
             else if(atr[8].equals("false")){
                 Aaux.setInternacional(false);
             }
+            lista.add(Aaux);
         }
     }
     br.close(); //Cuando el bloque de Try termina, el archivo se cierra solo, pero creo que no está de más
