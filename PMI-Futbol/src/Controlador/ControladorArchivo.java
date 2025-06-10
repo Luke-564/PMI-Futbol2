@@ -14,7 +14,8 @@ public class ControladorArchivo {
     
     File aj = new File("C:\\Users\\HP\\OneDrive\\OneDrive\\Escritorio\\Pala\\Maldita Perra Facultad\\2° Año\\Programación 2\\PMI-Futbol2\\PMI-Futbol\\src\\PMI-FutbolJugadoras.txt");
     File aa = new File("C:\\Users\\HP\\OneDrive\\OneDrive\\Escritorio\\Pala\\Maldita Perra Facultad\\2° Año\\Programación 2\\PMI-Futbol2\\PMI-Futbol\\src\\PMI-FutbolArbitros.txt");
-
+    boolean fin = false;
+    
     public void setAj(File aj) {
         this.aj = aj;
     }
@@ -116,27 +117,54 @@ catch(IOException e){
 }
 
 public void guardarJuEnArchivo(ArrayList<Jugadora> ju){
-try (BufferedWriter bw = new BufferedWriter(new FileWriter(aj))){
+try(BufferedReader br = new BufferedReader(new FileReader(aj))){
+    String reng;
+    while((reng=br.readLine())!=null){ 
+        if(reng.isEmpty()){
+            fin = true;
+            break;
+        }
+    }
+}
+catch(IOException e){
+    e.printStackTrace();
+}
+try (BufferedWriter bw = new BufferedWriter(new FileWriter(aj,true))){ // new FileWriter(aa,true) es abrir el achivo en modo apend
+    if (fin = true){
     for (Jugadora p : ju) {
                 bw.write(p.toString());
                 bw.newLine(); // salto de línea
             }
 }
+}    
 catch(IOException e){
     e.printStackTrace();
 }
 }
 
 public void guardarArbEnArchivo(ArrayList<Arbitro> arr){
-try (BufferedWriter bw = new BufferedWriter(new FileWriter(aa))){
+try(BufferedReader br = new BufferedReader(new FileReader(aa))){
+    String reng;
+    while((reng=br.readLine())!=null){ 
+        if(reng.isEmpty()){
+            fin = true;
+            break;
+        }
+    }
+}
+catch(IOException e){
+    e.printStackTrace();
+}
+try (BufferedWriter bw = new BufferedWriter(new FileWriter(aa,true))){ // new FileWriter(aa,true) es abrir el achivo en modo apend
+    if (fin = true){
     for (Arbitro p : arr) {
                 bw.write(p.toString());
                 bw.newLine(); // salto de línea
             }
 }
+}    
 catch(IOException e){
     e.printStackTrace();
 }
 }
-
 }
