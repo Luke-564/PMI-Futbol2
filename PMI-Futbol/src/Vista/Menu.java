@@ -2,6 +2,7 @@
 package Vista;
 //Liberias
 import Controlador.ControladorJugadoras;
+import Controlador.ControladorArchivo;
 import java.awt.GridLayout;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -13,7 +14,8 @@ public class Menu extends javax.swing.JFrame {
     DefaultTableModel modelJugadoras = new DefaultTableModel();
     //tabla de funciones
     DefaultTableModel modelFunciones = new DefaultTableModel();
-    
+    //Archivo
+    ControladorArchivo ctrlAr = new ControladorArchivo();
     public Menu() {
         initComponents();
         
@@ -41,6 +43,27 @@ public class Menu extends javax.swing.JFrame {
         TextPrompt mes = new TextPrompt("mes", txtMes);
         TextPrompt anio = new TextPrompt("anio", txtAnio);
         TextPrompt dni = new TextPrompt("No podrá modificarse", txtDni);
+        
+        // Evitar que se cierre automáticamente sin confirmar            /*confirmacion de Salida*/
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        // Agregar listener para capturar el cierre de ventana
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                int option = JOptionPane.showConfirmDialog(
+                 Menu.this,
+                 "¿Estás seguro que querés salir?",
+                    "Confirmar salida",
+                    JOptionPane.YES_NO_OPTION
+                );
+             if (option == JOptionPane.YES_OPTION) {
+                   //ctrlAr.guardarJuEnArchivo(ju); // Aca llamo a mi funcion de guardar 
+                 System.exit(0); 
+             }
+         }
+        });
+
     }
 
     @SuppressWarnings("unchecked")
