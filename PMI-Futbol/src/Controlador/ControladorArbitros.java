@@ -7,7 +7,7 @@ public class ControladorArbitros {
     
 /*Variables de instancia*/
 
-    private static Arbitro arbitro = new Arbitro();
+    private Arbitro arbitro = new Arbitro();
     private static ArrayList<Arbitro> listaArbitros = new ArrayList<>();
 
     
@@ -100,6 +100,9 @@ public class ControladorArbitros {
     public void setArbitroLista(){
 	
         this.listaArbitros.add(this.arbitro);
+    }
+    public void setArbitroDesdeLista(int pos){
+        this.arbitro = this.listaArbitros.get(pos);
     }
     
         //Carga todos los arbitros con el mismo en la lista temporal

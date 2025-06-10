@@ -35,10 +35,9 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         //A la tabla de jugadoras le guarda su modelo correspondiente
         tablaArbitros.setModel(modelArbitros);
         
-        //Crea un string con las columnas de la tabla de funciones
-        String tablaFun [] = {"Internacional", "Tarjetas", "Nombre", "Apellido", "Dni" };
+
         //Guarda el string en el modelo de funciones
-        modelFunciones.setColumnIdentifiers(tablaFun);
+        modelFunciones.setColumnIdentifiers(tabla);
         //A la tabla de funciones le guarda su modelo correspondiente
         tablaFunciones.setModel(modelFunciones);
         
@@ -72,7 +71,6 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         txtDni = new javax.swing.JTextField();
         txtNacionalidad = new javax.swing.JTextField();
         lblTarjetas = new javax.swing.JLabel();
-        sppTarjetas = new javax.swing.JSpinner();
         txtDia = new javax.swing.JTextField();
         txtMes = new javax.swing.JTextField();
         txtAnio = new javax.swing.JTextField();
@@ -80,6 +78,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         bttCargar = new javax.swing.JButton();
         bttEliminar = new javax.swing.JButton();
         CkBttInternacional = new javax.swing.JCheckBox();
+        txtTarjetas = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaArbitros = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
@@ -87,28 +86,11 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         bttActualizarTabla = new javax.swing.JButton();
         fondoFunciones = new javax.swing.JPanel();
         fondoOpciones = new javax.swing.JPanel();
-        bttCantJu = new javax.swing.JRadioButton();
-        bttCantGoles = new javax.swing.JRadioButton();
-        jLabel2 = new javax.swing.JLabel();
-        bttMasExpu = new javax.swing.JRadioButton();
-        bttJugadorasPosicion = new javax.swing.JRadioButton();
+        ChkBxFiltroInternacional = new javax.swing.JCheckBox();
+        lblFiltros = new javax.swing.JLabel();
+        bttActualizarFiltro = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaFunciones = new javax.swing.JTable();
-        tapaPestañas = new javax.swing.JPanel();
-        pestañasOpciones = new javax.swing.JTabbedPane();
-        vacio = new javax.swing.JPanel();
-        cantJu = new javax.swing.JPanel();
-        bttBuscarJugadoras = new javax.swing.JButton();
-        txtBuscarPorEquipoJugadoras = new javax.swing.JTextField();
-        cantGol = new javax.swing.JPanel();
-        txtBuscarCantidadGoles = new javax.swing.JTextField();
-        bttBuscarCantidadGoles = new javax.swing.JButton();
-        masExpulsiones = new javax.swing.JPanel();
-        txtBuscarMasExpulsiones = new javax.swing.JTextField();
-        bttBuscarMasExpulsiones = new javax.swing.JButton();
-        porPosicion = new javax.swing.JPanel();
-        txtBuscarPorPosicion = new javax.swing.JTextField();
-        bttBuscarPorPosicion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,10 +129,6 @@ public class Menu_Arbitros extends javax.swing.JFrame {
 
         lblTarjetas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTarjetas.setText("Tarjetas sacadas");
-
-        sppTarjetas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        sppTarjetas.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        sppTarjetas.setToolTipText("");
 
         txtDia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
@@ -194,6 +172,9 @@ public class Menu_Arbitros extends javax.swing.JFrame {
             }
         });
 
+        txtTarjetas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtTarjetas.setText("0");
+
         javax.swing.GroupLayout fondoDatosLayout = new javax.swing.GroupLayout(fondoDatos);
         fondoDatos.setLayout(fondoDatosLayout);
         fondoDatosLayout.setHorizontalGroup(
@@ -217,9 +198,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
                         .addGap(53, 53, 53)
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblTarjetas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sppTarjetas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblTarjetas))
                     .addGroup(fondoDatosLayout.createSequentialGroup()
                         .addComponent(lblNacimiento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -232,7 +211,9 @@ public class Menu_Arbitros extends javax.swing.JFrame {
                         .addComponent(lblNacionalidad)
                         .addGap(18, 18, 18)
                         .addComponent(txtNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtTarjetas, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(bttModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -249,7 +230,6 @@ public class Menu_Arbitros extends javax.swing.JFrame {
                         .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNombre)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sppTarjetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblTarjetas))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -271,12 +251,15 @@ public class Menu_Arbitros extends javax.swing.JFrame {
                             .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNacimiento)))
                     .addGroup(fondoDatosLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(bttModificar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bttCargar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bttEliminar)))
+                        .addContainerGap()
+                        .addGroup(fondoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTarjetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(fondoDatosLayout.createSequentialGroup()
+                                .addComponent(bttModificar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bttCargar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bttEliminar)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -324,38 +307,28 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         fondoFunciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102), 3));
         fondoFunciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bttCantJu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bttCantJu.setText("Cantidad de jugadoras");
-        bttCantJu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bttCantJuMouseClicked(evt);
+        ChkBxFiltroInternacional.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ChkBxFiltroInternacional.setText("Es internacional");
+        ChkBxFiltroInternacional.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        ChkBxFiltroInternacional.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ChkBxFiltroInternacionalStateChanged(evt);
+            }
+        });
+        ChkBxFiltroInternacional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkBxFiltroInternacionalActionPerformed(evt);
             }
         });
 
-        bttCantGoles.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bttCantGoles.setText("Cantidad de goles");
-        bttCantGoles.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bttCantGolesMouseClicked(evt);
-            }
-        });
+        lblFiltros.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblFiltros.setText("Filtros");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Buscar por:");
-
-        bttMasExpu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bttMasExpu.setText("Más expulsiones");
-        bttMasExpu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bttMasExpuMouseClicked(evt);
-            }
-        });
-
-        bttJugadorasPosicion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bttJugadorasPosicion.setText("Jugadoras por posicion");
-        bttJugadorasPosicion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bttJugadorasPosicionMouseClicked(evt);
+        bttActualizarFiltro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bttActualizarFiltro.setText("Actualizar");
+        bttActualizarFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttActualizarFiltroActionPerformed(evt);
             }
         });
 
@@ -364,33 +337,23 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         fondoOpcionesLayout.setHorizontalGroup(
             fondoOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoOpcionesLayout.createSequentialGroup()
-                .addGroup(fondoOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(fondoOpcionesLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
-                    .addGroup(fondoOpcionesLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(fondoOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(bttJugadorasPosicion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                            .addComponent(bttMasExpu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bttCantGoles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bttCantJu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(fondoOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lblFiltros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ChkBxFiltroInternacional, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bttActualizarFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         fondoOpcionesLayout.setVerticalGroup(
             fondoOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoOpcionesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ChkBxFiltroInternacional)
                 .addGap(18, 18, 18)
-                .addComponent(bttCantJu)
-                .addGap(18, 18, 18)
-                .addComponent(bttCantGoles)
-                .addGap(18, 18, 18)
-                .addComponent(bttMasExpu)
-                .addGap(18, 18, 18)
-                .addComponent(bttJugadorasPosicion)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addComponent(bttActualizarFiltro)
+                .addContainerGap(290, Short.MAX_VALUE))
         );
 
         fondoFunciones.add(fondoOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 260, 430));
@@ -408,149 +371,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablaFunciones);
 
-        fondoFunciones.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 137, 720, 310));
-
-        javax.swing.GroupLayout tapaPestañasLayout = new javax.swing.GroupLayout(tapaPestañas);
-        tapaPestañas.setLayout(tapaPestañasLayout);
-        tapaPestañasLayout.setHorizontalGroup(
-            tapaPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
-        );
-        tapaPestañasLayout.setVerticalGroup(
-            tapaPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
-
-        fondoFunciones.add(tapaPestañas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 720, 30));
-
-        javax.swing.GroupLayout vacioLayout = new javax.swing.GroupLayout(vacio);
-        vacio.setLayout(vacioLayout);
-        vacioLayout.setHorizontalGroup(
-            vacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
-        );
-        vacioLayout.setVerticalGroup(
-            vacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 75, Short.MAX_VALUE)
-        );
-
-        pestañasOpciones.addTab("tab5", vacio);
-
-        cantJu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        bttBuscarJugadoras.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        bttBuscarJugadoras.setText("Buscar");
-
-        txtBuscarPorEquipoJugadoras.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
-        javax.swing.GroupLayout cantJuLayout = new javax.swing.GroupLayout(cantJu);
-        cantJu.setLayout(cantJuLayout);
-        cantJuLayout.setHorizontalGroup(
-            cantJuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cantJuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtBuscarPorEquipoJugadoras, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bttBuscarJugadoras, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
-        );
-        cantJuLayout.setVerticalGroup(
-            cantJuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cantJuLayout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
-                .addGroup(cantJuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bttBuscarJugadoras)
-                    .addComponent(txtBuscarPorEquipoJugadoras))
-                .addContainerGap())
-        );
-
-        pestañasOpciones.addTab("tab1", cantJu);
-
-        txtBuscarCantidadGoles.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
-        bttBuscarCantidadGoles.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        bttBuscarCantidadGoles.setText("Buscar");
-
-        javax.swing.GroupLayout cantGolLayout = new javax.swing.GroupLayout(cantGol);
-        cantGol.setLayout(cantGolLayout);
-        cantGolLayout.setHorizontalGroup(
-            cantGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cantGolLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtBuscarCantidadGoles, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bttBuscarCantidadGoles, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
-        );
-        cantGolLayout.setVerticalGroup(
-            cantGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cantGolLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addGroup(cantGolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bttBuscarCantidadGoles)
-                    .addComponent(txtBuscarCantidadGoles))
-                .addContainerGap())
-        );
-
-        pestañasOpciones.addTab("tab2", cantGol);
-
-        txtBuscarMasExpulsiones.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
-        bttBuscarMasExpulsiones.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        bttBuscarMasExpulsiones.setText("Buscar");
-
-        javax.swing.GroupLayout masExpulsionesLayout = new javax.swing.GroupLayout(masExpulsiones);
-        masExpulsiones.setLayout(masExpulsionesLayout);
-        masExpulsionesLayout.setHorizontalGroup(
-            masExpulsionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, masExpulsionesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtBuscarMasExpulsiones, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bttBuscarMasExpulsiones, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
-        );
-        masExpulsionesLayout.setVerticalGroup(
-            masExpulsionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, masExpulsionesLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addGroup(masExpulsionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bttBuscarMasExpulsiones)
-                    .addComponent(txtBuscarMasExpulsiones))
-                .addContainerGap())
-        );
-
-        pestañasOpciones.addTab("tab3", masExpulsiones);
-
-        txtBuscarPorPosicion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
-        bttBuscarPorPosicion.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        bttBuscarPorPosicion.setText("Buscar");
-
-        javax.swing.GroupLayout porPosicionLayout = new javax.swing.GroupLayout(porPosicion);
-        porPosicion.setLayout(porPosicionLayout);
-        porPosicionLayout.setHorizontalGroup(
-            porPosicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, porPosicionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtBuscarPorPosicion, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bttBuscarPorPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
-        );
-        porPosicionLayout.setVerticalGroup(
-            porPosicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, porPosicionLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addGroup(porPosicionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bttBuscarPorPosicion)
-                    .addComponent(txtBuscarPorPosicion))
-                .addContainerGap())
-        );
-
-        pestañasOpciones.addTab("tab4", porPosicion);
-
-        fondoFunciones.add(pestañasOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 720, 110));
+        fondoFunciones.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 17, 720, 430));
 
         pestañas.addTab("Funciones", fondoFunciones);
 
@@ -612,9 +433,13 @@ public class Menu_Arbitros extends javax.swing.JFrame {
             error = true;
         }
         controlador.setArbitroInternacional(CkBttInternacional.isSelected());
-        /*if(controlador.getArbitrosInternacionales().isEmpty()){
+        if(controlador.getArbitrosInternacionales() == null){
             error = true;
-        }*/
+        }
+        controlador.setArbitroTarjetas(Integer.parseInt((String)txtTarjetas.getText()));
+        if(controlador.getArbitroTarjetas() < 0){
+            error = true;
+        }
         //Aca es cuando evalua si muestra error o cargado con exito
         if (error) {
             JOptionPane.showMessageDialog(this,"Complete todos los campos.");
@@ -633,7 +458,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         txtMes.setText("");
         txtAnio.setText("");
         txtDni.setText("");
-        sppTarjetas.setValue(vacio);
+        txtTarjetas.setText("");
         CkBttInternacional.setSelected(false);
     }//GEN-LAST:event_bttModificarActionPerformed
 
@@ -677,7 +502,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         if(controlador.getArbitrosInternacionales() == null){
             error = true;
         }
-        controlador.setArbitroTarjetas(sppTarjetas.getComponentCount());
+        controlador.setArbitroTarjetas(Integer.parseInt((String)txtTarjetas.getText()));
         if(controlador.getArbitroTarjetas() < 0){
             error = true;
         }
@@ -685,7 +510,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         if (error) {
             JOptionPane.showMessageDialog(this,"Complete todos los campos.");
         } else {
-            //Guarda la jugadora a la lista
+            //Guarda el Arbitro a la lista
             controlador.setArbitroLista();
             
             refrescarTablaArbitros();
@@ -700,7 +525,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         txtMes.setText("");
         txtAnio.setText("");
         txtDni.setText("");
-        sppTarjetas.setValue(0);
+        txtTarjetas.setText("");
         CkBttInternacional.setSelected(false);
     }//GEN-LAST:event_bttCargarActionPerformed
 
@@ -733,15 +558,14 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nombre = txtBuscar.getText();
         ControladorArbitros controlador = new ControladorArbitros();
+        //Crea el objeto que tendra las filas de la tabla
+        Object[] fila = new Object[5];
+        //Elimina contenido anterior de la tabla
+        while (modelArbitros.getRowCount() > 0) {
+        modelArbitros.removeRow(0);
+            }
         for (int i = 0; i < controlador.getArbitroSoloPorNombre(nombre).size(); i++) {
             controlador.setArbitroDeListaExterna(controlador.getArbitroSoloPorNombre(nombre), i);
-
-            //Crea el objeto que tendra las filas de la tabla
-            Object[] fila = new Object[5];
-            //Elimina contenido anterior de la tabla
-            while (modelArbitros.getRowCount() > 0) {
-                modelArbitros.removeRow(0);
-            }
             //Va guardando los datos correspondientes en las filas del objeto
             fila[0] = Boolean.toString(controlador.isArbitroInternacional());
             fila[1] = Integer.toString(controlador.getArbitroTarjetas());
@@ -777,35 +601,70 @@ public class Menu_Arbitros extends javax.swing.JFrame {
             modelArbitros.addRow(fila);
         } 
     }
+    public void refrescarTablaFunciones(){
+        //Crea un controlador de arbitros
+        ControladorArbitros controlador = new ControladorArbitros();
+        //Crea el objeto que tendra las filas de la tabla
+        String[] fila = new String[5];
+        //Elimina contenido anterior de la tabla
+        while (modelFunciones.getRowCount() > 0) {
+            modelFunciones.removeRow(0);
+        }
+        if((boolean)ChkBxFiltroInternacional.isSelected() == true){
+            //Recorre la lista del controlador
+            for (int i = 0; i < controlador.getArbitrosInternacionales().size(); i++) {
+              //Guarda la jugadora de dicho lugar de la fila en la variable jugadora del controlador
+              controlador.setArbitroDeListaExterna(controlador.getArbitrosInternacionales(),i);
+              //Va guardando los datos correspondientes en las filas del objeto
+              fila[0] = Boolean.toString(controlador.isArbitroInternacional());
+              fila[1] = Integer.toString(controlador.getArbitroTarjetas());
+              fila[2] = controlador.getArbitroNombre();
+              fila[3] = controlador.getArbitroApellido();
+              fila[4] = controlador.getArbitroDni();
+               //Guarda las filas en la tabla
+              modelFunciones.addRow(fila);
+            } 
+        }
+        else{
+            for (int i = 0; i < controlador.getSizeLista(); i++) {
+            //Guarda la jugadora de dicho lugar de la fila en la variable jugadora del controlador
+            controlador.setArbitroDesdeLista(i);
+            if(controlador.isArbitroInternacional() == false){
+            //Va guardando los datos correspondientes en las filas del objeto
+            fila[0] = Boolean.toString(controlador.isArbitroInternacional());
+            fila[1] = Integer.toString(controlador.getArbitroTarjetas());
+            fila[2] = controlador.getArbitroNombre();
+            fila[3] = controlador.getArbitroApellido();
+            fila[4] = controlador.getArbitroDni();
+            //Guarda las filas en la tabla
+            modelFunciones.addRow(fila);
+            }
+            }
+        }
+    }
     private void bttActualizarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttActualizarTablaActionPerformed
         // TODO add your handling code here:
         refrescarTablaArbitros();
 
     }//GEN-LAST:event_bttActualizarTablaActionPerformed
 
-    private void bttCantJuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bttCantJuMouseClicked
-        //conecta la opcion con la pestaña correspondiente
-        pestañasOpciones.setSelectedIndex(1);
-    }//GEN-LAST:event_bttCantJuMouseClicked
-
-    private void bttCantGolesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bttCantGolesMouseClicked
-        //conecta la opcion con la pestaña correspondiente
-        pestañasOpciones.setSelectedIndex(2);
-    }//GEN-LAST:event_bttCantGolesMouseClicked
-
-    private void bttMasExpuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bttMasExpuMouseClicked
-        //conecta la opcion con la pestaña correspondiente
-        pestañasOpciones.setSelectedIndex(3);
-    }//GEN-LAST:event_bttMasExpuMouseClicked
-
-    private void bttJugadorasPosicionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bttJugadorasPosicionMouseClicked
-        //conecta la opcion con la pestaña correspondiente
-        pestañasOpciones.setSelectedIndex(4);
-    }//GEN-LAST:event_bttJugadorasPosicionMouseClicked
-
     private void CkBttInternacionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CkBttInternacionalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CkBttInternacionalActionPerformed
+
+    private void ChkBxFiltroInternacionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkBxFiltroInternacionalActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_ChkBxFiltroInternacionalActionPerformed
+
+    private void ChkBxFiltroInternacionalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ChkBxFiltroInternacionalStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ChkBxFiltroInternacionalStateChanged
+
+    private void bttActualizarFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttActualizarFiltroActionPerformed
+        // TODO add your handling code here:
+        refrescarTablaFunciones();
+    }//GEN-LAST:event_bttActualizarFiltroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -843,56 +702,39 @@ public class Menu_Arbitros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox ChkBxFiltroInternacional;
     private javax.swing.JCheckBox CkBttInternacional;
+    private javax.swing.JButton bttActualizarFiltro;
     private javax.swing.JButton bttActualizarTabla;
     private javax.swing.JButton bttBuscar;
-    private javax.swing.JButton bttBuscarCantidadGoles;
-    private javax.swing.JButton bttBuscarJugadoras;
-    private javax.swing.JButton bttBuscarMasExpulsiones;
-    private javax.swing.JButton bttBuscarPorPosicion;
-    private javax.swing.JRadioButton bttCantGoles;
-    private javax.swing.JRadioButton bttCantJu;
     private javax.swing.JButton bttCargar;
     private javax.swing.JButton bttEliminar;
-    private javax.swing.JRadioButton bttJugadorasPosicion;
-    private javax.swing.JRadioButton bttMasExpu;
     private javax.swing.JButton bttModificar;
-    private javax.swing.JPanel cantGol;
-    private javax.swing.JPanel cantJu;
     private javax.swing.JPanel fondoArbitros;
     private javax.swing.JPanel fondoDatos;
     private javax.swing.JPanel fondoFunciones;
     private javax.swing.JPanel fondoOpciones;
     private javax.swing.JPanel fondoPrincipal;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblDni;
+    private javax.swing.JLabel lblFiltros;
     private javax.swing.JLabel lblNacimiento;
     private javax.swing.JLabel lblNacionalidad;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTarjetas;
-    private javax.swing.JPanel masExpulsiones;
     private javax.swing.JTabbedPane pestañas;
-    private javax.swing.JTabbedPane pestañasOpciones;
-    private javax.swing.JPanel porPosicion;
-    private javax.swing.JSpinner sppTarjetas;
     private javax.swing.JTable tablaArbitros;
     private javax.swing.JTable tablaFunciones;
-    private javax.swing.JPanel tapaPestañas;
     private javax.swing.JTextField txtAnio;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtBuscarCantidadGoles;
-    private javax.swing.JTextField txtBuscarMasExpulsiones;
-    private javax.swing.JTextField txtBuscarPorEquipoJugadoras;
-    private javax.swing.JTextField txtBuscarPorPosicion;
     private javax.swing.JTextField txtDia;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtMes;
     private javax.swing.JTextField txtNacionalidad;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JPanel vacio;
+    private javax.swing.JTextField txtTarjetas;
     // End of variables declaration//GEN-END:variables
 }
