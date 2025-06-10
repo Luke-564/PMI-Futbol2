@@ -25,7 +25,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         bttJugadoras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1100, 600));
 
         fondo.setBackground(new java.awt.Color(255, 255, 204));
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 255, 102), new java.awt.Color(255, 255, 102), new java.awt.Color(255, 255, 102), new java.awt.Color(255, 255, 102)));
@@ -41,6 +40,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         bttArbitros.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         bttArbitros.setText("Arbitros");
+        bttArbitros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttArbitrosActionPerformed(evt);
+            }
+        });
         fondo.add(bttArbitros, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 360, 210, 120));
 
         bttJugadoras.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -73,6 +77,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menu.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_bttJugadorasActionPerformed
+
+    private void bttArbitrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttArbitrosActionPerformed
+        // TODO add your handling code here:
+        Menu_Arbitros menu = new Menu_Arbitros();
+        menu.setVisible(true);
+        menu.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_bttArbitrosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttArbitros;

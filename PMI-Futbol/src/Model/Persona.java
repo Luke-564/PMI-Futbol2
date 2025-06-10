@@ -4,7 +4,7 @@ public class Persona {
     //variables de instancia
     private String nombre;
     private String apellido;
-    private Fecha nacimiento;
+    private Fecha nacimiento = new Fecha();
     private String nacionalidad;
     private String dni;
     //Constructores

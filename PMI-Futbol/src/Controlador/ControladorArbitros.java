@@ -7,24 +7,18 @@ public class ControladorArbitros {
     
 /*Variables de instancia*/
 
-    private Arbitro arbitro ;
-    private ArrayList<Arbitro> listaArbitros;
+    private static Arbitro arbitro = new Arbitro();
+    private static ArrayList<Arbitro> listaArbitros = new ArrayList<>();
 
     
 /*Constructores*/
     
         //Constructor vacio
     public ControladorArbitros(){
-        /* Me parece que no es necesario
-        this.arbitro = new Arbitro();
-        this.listaArbitros = new ArrayList<>();
-        this.listaTempArbitros = new ArrayList<>();
-        */
+
     }
         //Constructor lleno
-    public ControladorArbitros(Arbitro arbitro, ArrayList<Arbitro> listaArbitros, ArrayList<Arbitro> listaTempArbitros) {
-        
-        this.arbitro = arbitro;
+    public ControladorArbitros(ArrayList<Arbitro> listaArbitros) {
         this.listaArbitros = listaArbitros;
     }
     
@@ -103,16 +97,25 @@ public class ControladorArbitros {
 /*Metodos*/
     
         //Añade un arbitro a la lista
-    public void setArbitroLista(Arbitro arbitro){
-		this.arbitro = arbitro;
+    public void setArbitroLista(){
+	
         this.listaArbitros.add(this.arbitro);
     }
     
         //Carga todos los arbitros con el mismo en la lista temporal
-    public ArrayList getArbitroPorNombre(String nombre, String apellido){
+    public ArrayList<Arbitro> getArbitroPorNombreYApellido(String nombre, String apellido){
         ArrayList<Arbitro> listaTempArbitros = new ArrayList<>();
         for(Arbitro i : this.listaArbitros){
                 if(i.getNombre().equals(nombre) && i.getApellido().equals(apellido)){
+                    listaTempArbitros.add(i);
+            }
+        }
+		return listaTempArbitros;
+    }
+    public ArrayList<Arbitro> getArbitroSoloPorNombre(String nombre){
+        ArrayList<Arbitro> listaTempArbitros = new ArrayList<>();
+        for(Arbitro i : this.listaArbitros){
+                if(i.getNombre().equals(nombre)){
                     listaTempArbitros.add(i);
             }
         }
@@ -152,7 +155,7 @@ public class ControladorArbitros {
     }
     
         //Elimina el arbitro por codigo, Si se encuentra y lo elimina devuelve verdadero, si no se encuentra devuelve falso
-    public void eliminarArbitroLista(int dni){
+    public void eliminarArbitroLista(String dni){
         for(int i = 0; i< this.listaArbitros.size(); i++){
             if(this.listaArbitros.get(i).getDni().equals(dni)){
                 this.listaArbitros.remove(i);
@@ -171,13 +174,16 @@ public class ControladorArbitros {
         }
         throw new RuntimeException("No se pudo modificar el arbitro");
     }
-		//Devuelve el tamaño de la lista. Es necesario especificar si es la lista temporal o no
-	public int getSizeLista(){
-				return this.listaArbitros.size();
-		}
+    public void setArbitroDeListaExterna(ArrayList<Arbitro> lista,int pos){
+        this.arbitro = lista.get(pos);
+    }
+	//Devuelve el tamaño de la lista. Es necesario especificar si es la lista temporal o no
+    public int getSizeLista(){
+	return this.listaArbitros.size();
+	}
 	
-		//Devuelve el arbitro que está en esa posicion de la lista. Es necesario especificarsi si es la lista temporal o no
-	public Arbitro getArbitroLista(int posicion){
-				return this.listaArbitros.get(posicion);
-		}	        
+	//Devuelve el arbitro que está en esa posicion de la lista. Es necesario especificarsi si es la lista temporal o no
+    public Arbitro getArbitroLista(int posicion){
+	return this.listaArbitros.get(posicion);
+	}	        
 }
