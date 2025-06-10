@@ -162,6 +162,7 @@ public class ControladorArbitros {
         for(int i = 0; i< this.listaArbitros.size(); i++){
             if(this.listaArbitros.get(i).getDni().equals(dni)){
                 this.listaArbitros.remove(i);
+                return;
             }
         }
         throw new RuntimeException("No se pudo eliminar al arbitro");

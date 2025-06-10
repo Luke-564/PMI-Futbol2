@@ -551,6 +551,7 @@ public class Menu_Arbitros extends javax.swing.JFrame {
         }
         else {
             JOptionPane.showMessageDialog(this,"Arbitro eliminado.");
+            refrescarTablaArbitros();
         }
     }//GEN-LAST:event_bttEliminarActionPerformed
 
