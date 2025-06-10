@@ -12,8 +12,8 @@ public class ControladorJugadoras {
     //Variables de instancia
     
     private Jugadora jugadora = new Jugadora ();
-    private ArrayList <Jugadora> listaJu = new ArrayList<>(); 
-    private HashMap<String, Integer> equipos = new HashMap<>();
+    private static ArrayList <Jugadora> listaJu = new ArrayList<>(); 
+    private static HashMap<String, Integer> equipos = new HashMap<>();
     
     //Constructores
     
